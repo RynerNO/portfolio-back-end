@@ -1,0 +1,29 @@
+{
+    "presets": [
+
+        "@babel/preset-env"
+
+    ],
+    "ignore": [
+        "./server/public",
+        "/node_modules/",
+    ],
+    "plugins": [
+        ["module-resolver", {
+            "root": ["./"], 
+            "alias": {
+                "@models": "./src/models",
+                "@config": "./src/config",
+                "@routes": "./src/routes",
+                "@controllers": "./src/controllers",
+                "@validators" : "./src/validators",
+                "@middleware" : "./src/middleware"
+            }}
+        ],
+        ["@babel/plugin-transform-runtime",
+            {
+              "regenerator": true
+            }
+          ]
+    ]
+}
