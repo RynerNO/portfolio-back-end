@@ -41,7 +41,9 @@ app.use(v1Router);
 
 app.use(Express.static(path.resolve('dist', 'public')));
 
-
+app.use("*", (req, res) => {
+  console.log(req)
+})
 async function isFileExist(path) {
      try {
        const isExist = await fs.promises.stat(path)
@@ -84,10 +86,6 @@ async function start() {
 
   app.listen(config.port, async () => {
     console.log(`SERVER RUNNING ON PORT: ${config.port}`);
-    // HEROKU DYNO ANTI-SLEEP
-    setInterval(() => {
-      axios.get('https://portfolio-ruiner.herokuapp.com/').then(() => {}).catch(() => {})
-    }, 1000*60*25)
   });
 }
 
