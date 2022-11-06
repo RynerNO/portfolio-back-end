@@ -1,5 +1,4 @@
 FROM node:12-slim
-RUN npm config set unsafe-perm true
 WORKDIR /
 COPY . .
 RUN apt-get update \
@@ -14,7 +13,8 @@ RUN apt-get update \
 RUN yarn install && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
     && mkdir -p /home/pptruser/Downloads \
     && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /node_modules
+    && chown -R pptruser:pptruser /node_modules \
+    && chown -R pptruser:pptruser /dist
 
 USER pptruser
 CMD ["npm", "run", "prod"]
