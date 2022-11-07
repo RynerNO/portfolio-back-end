@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.methods.generateToken = function() {
-  return jwt.sign({ id: this._id }, config.jwtSecret);
+  return jwt.sign(this.email, config.jwtSecret);
 };
 
 UserSchema.methods.comparePasswords = function (plainPassword) {

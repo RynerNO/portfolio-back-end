@@ -7,9 +7,9 @@ export default async (req, res, next) => {
   try {
     const token = req.headers.access_token;
 
-    const data = jwt.verify(token, config.jwtSecret);
+    const email = jwt.verify(token, config.jwtSecret);
 
-    const user = await User().findById(data);
+    const user = await User().findOne({ email: email });
     if (!user) {
       throw new Error();
     }
