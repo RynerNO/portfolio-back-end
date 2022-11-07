@@ -9,7 +9,7 @@ export default async (req, res, next) => {
 
     const data = jwt.verify(token, config.jwtSecret);
 
-    const user = await User().findById(data.id);
+    const user = await User().findById(data);
     if (!user) {
       throw new Error();
     }

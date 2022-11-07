@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "start": "node dist/index.js",
+    "start": "pm2 start dist/index.js",
     "prod": "yarn build && yarn start"
   },
   "devDependencies": {
@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.17",
+    "pm2": "^5.2.2",
     "rimraf": "^3.0.2",
     "uuid": "^8.3.2",
     "webp-converter": "^2.3.3",
