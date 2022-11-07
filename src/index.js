@@ -12,10 +12,8 @@ import path from 'path';
 
 import BodyParser from 'body-parser';
 
-
-
 import compression from 'compression';
-
+import cors from 'cors';
 
 import Project from '@models/Project';
 import fs from 'fs';
@@ -30,6 +28,9 @@ Mongoose.connect(config.databaseUrl, {
 });
 const app = Express();
 
+app.use(cors({
+  origin: 'https://ryner.xyz'
+}))
 app.use(BodyParser.json());
 
 app.use(compression());
