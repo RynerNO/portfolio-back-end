@@ -28,7 +28,7 @@ var _default = /*#__PURE__*/function () {
             token = req.headers.access_token;
             data = _jsonwebtoken["default"].verify(token, _config["default"].jwtSecret);
             _context.next = 5;
-            return (0, _User["default"])().findById(data.id);
+            return (0, _User["default"])().findById(data);
 
           case 5:
             user = _context.sent;

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 const send = (req, res) => {
-
+  console.log(req.body)
   const message = `
 From: *${req.body.email}* 
 Name: * ${req.body.name}* 

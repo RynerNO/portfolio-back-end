@@ -55,8 +55,8 @@ app.use((0, _cors["default"])({
 }));
 app.use(_bodyParser["default"].json());
 app.use((0, _compression["default"])());
-app.use(_routes["default"]);
 app.use(_express["default"]["static"](_path["default"].resolve('dist', 'public')));
+app.use(_routes["default"]);
 
 function isFileExist(_x) {
   return _isFileExist.apply(this, arguments);
@@ -232,13 +232,9 @@ function _start() {
                 while (1) {
                   switch (_context2.prev = _context2.next) {
                     case 0:
-                      console.log("SERVER RUNNING ON PORT: ".concat(_config["default"].port)); // HEROKU DYNO ANTI-SLEEP
+                      console.log("SERVER RUNNING ON PORT: ".concat(_config["default"].port));
 
-                      setInterval(function () {
-                        _axios["default"].get('https://portfolio-ruiner.herokuapp.com/').then(function () {})["catch"](function () {});
-                      }, 1000 * 60 * 25);
-
-                    case 2:
+                    case 1:
                     case "end":
                       return _context2.stop();
                   }

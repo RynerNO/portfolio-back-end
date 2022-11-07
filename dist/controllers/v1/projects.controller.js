@@ -32,35 +32,36 @@ var getProjects = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            console.log("Projects req:".concat(req.body$));
             projectID = req.body.projectID;
 
             if (projectID) {
-              _context.next = 8;
+              _context.next = 9;
               break;
             }
 
-            _context.next = 4;
+            _context.next = 5;
             return (0, _Project["default"])().find();
 
-          case 4:
+          case 5:
             projects = _context.sent;
             return _context.abrupt("return", res.status(200).json({
               projects: projects
             }));
 
-          case 8:
-            _context.next = 10;
+          case 9:
+            _context.next = 11;
             return (0, _Project["default"])().findOne({
               projectID: projectID
             });
 
-          case 10:
+          case 11:
             project = _context.sent;
             return _context.abrupt("return", res.status(200).json({
               project: project
             }));
 
-          case 12:
+          case 13:
           case "end":
             return _context.stop();
         }
@@ -81,16 +82,17 @@ var addProject = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
+            console.log("Projects req:".concat(req.body$));
             _req$body = req.body, Title = _req$body.Title, Tech = _req$body.Tech, Git = _req$body.Git, Link = _req$body.Link, Pages = _req$body.Pages, projectID = _req$body.projectID;
             update = false;
-            _context2.prev = 2;
+            _context2.prev = 3;
 
             if (!projectID) {
               projectID = (0, _uuid.v4)();
             } else update = true;
 
             if (!update) {
-              _context2.next = 8;
+              _context2.next = 9;
               break;
             }
 
@@ -103,34 +105,34 @@ var addProject = /*#__PURE__*/function () {
                 resolve();
               });
             });
-            _context2.next = 8;
+            _context2.next = 9;
             return deleteFolder;
 
-          case 8:
-            _context2.next = 10;
+          case 9:
+            _context2.next = 11;
             return _fs["default"].promises.mkdir(_path["default"].resolve('dist', "public/posters/".concat(projectID)), {
               recursive: true
             });
 
-          case 10:
-            _context2.next = 12;
+          case 11:
+            _context2.next = 13;
             return _captureWebsite["default"].file(Link, _path["default"].resolve('dist', "public/posters/".concat(projectID), 'poster.png'), {
               launchOptions: {
                 args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
               }
             });
 
-          case 12:
-            _context2.next = 14;
+          case 13:
+            _context2.next = 15;
             return _webpConverter["default"].cwebp(_path["default"].resolve('dist', "public/posters/".concat(projectID), 'poster.png'), _path["default"].resolve('dist', "public/posters/".concat(projectID, "/poster.webp")), "-q 90");
 
-          case 14:
+          case 15:
             if (update) {
-              _context2.next = 19;
+              _context2.next = 20;
               break;
             }
 
-            _context2.next = 17;
+            _context2.next = 18;
             return (0, _Project["default"])().create({
               title: Title,
               tech: Tech,
@@ -140,12 +142,12 @@ var addProject = /*#__PURE__*/function () {
               projectID: projectID
             });
 
-          case 17:
-            _context2.next = 21;
+          case 18:
+            _context2.next = 22;
             break;
 
-          case 19:
-            _context2.next = 21;
+          case 20:
+            _context2.next = 22;
             return (0, _Project["default"])().updateOne({
               projectID: projectID
             }, {
@@ -157,26 +159,26 @@ var addProject = /*#__PURE__*/function () {
               projectID: projectID
             });
 
-          case 21:
+          case 22:
             return _context2.abrupt("return", res.status(200).json({
               message: 'Success'
             }));
 
-          case 24:
-            _context2.prev = 24;
-            _context2.t0 = _context2["catch"](2);
+          case 25:
+            _context2.prev = 25;
+            _context2.t0 = _context2["catch"](3);
             console.log(_context2.t0);
             return _context2.abrupt("return", res.status(400).json({
               message: 'Error',
               error: _context2.t0.message
             }));
 
-          case 28:
+          case 29:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[2, 24]]);
+    }, _callee2, null, [[3, 25]]);
   }));
 
   return function addProject(_x3, _x4) {
@@ -191,14 +193,15 @@ var deleteProject = /*#__PURE__*/function () {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
+            console.log("Projects req:".concat(req.body$));
             projectID = req.body.projectID;
-            _context3.prev = 1;
-            _context3.next = 4;
+            _context3.prev = 2;
+            _context3.next = 5;
             return (0, _Project["default"])().deleteOne({
               projectID: projectID
             });
 
-          case 4:
+          case 5:
             (0, _rimraf["default"])(_path["default"].resolve('dist', "public/posters/".concat(projectID)), function (error) {
               if (error) {
                 console.error(error);
@@ -208,21 +211,21 @@ var deleteProject = /*#__PURE__*/function () {
               message: 'Success'
             }));
 
-          case 8:
-            _context3.prev = 8;
-            _context3.t0 = _context3["catch"](1);
+          case 9:
+            _context3.prev = 9;
+            _context3.t0 = _context3["catch"](2);
             console.log(_context3.t0);
             return _context3.abrupt("return", res.status(400).json({
               message: 'failed',
               error: _context3.t0.message
             }));
 
-          case 12:
+          case 13:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[1, 8]]);
+    }, _callee3, null, [[2, 9]]);
   }));
 
   return function deleteProject(_x5, _x6) {

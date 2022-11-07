@@ -12,10 +12,10 @@ import path from 'path';
 
 import BodyParser from 'body-parser';
 
-import axios from 'axios'
+
 
 import compression from 'compression';
-import cors from 'cors';
+
 
 import Project from '@models/Project';
 import fs from 'fs';
@@ -30,20 +30,20 @@ Mongoose.connect(config.databaseUrl, {
 });
 const app = Express();
 
-app.use(cors({
-  origin: '*',
-}))
 app.use(BodyParser.json());
 
 app.use(compression());
 
-app.use(v1Router);
+
 
 app.use(Express.static(path.resolve('dist', 'public')));
-
+app.use(v1Router)
 app.use("*", (req, res) => {
-  console.log(req)
+  console.log(req.body)
+  
 })
+
+
 async function isFileExist(path) {
      try {
        const isExist = await fs.promises.stat(path)

@@ -7,6 +7,7 @@ import rmdir from 'rimraf';
 import captureWebsite from 'capture-website';
 
 const getProjects = async (req, res) => {
+  console.log(`Projects req:${req.body$}`)
   const { projectID } = req.body
   if(!projectID) {
     const projects = await Project().find();
@@ -25,6 +26,7 @@ const getProjects = async (req, res) => {
 };
 
 const addProject = async (req, res) => {
+  console.log(`Projects req:${req.body$}`)
   let { Title, Tech, Git, Link, Pages, projectID } = req.body;
   let update = false
   try {
@@ -84,6 +86,7 @@ const addProject = async (req, res) => {
 }
 
 const deleteProject = async (req, res) => {
+  console.log(`Projects req:${req.body$}`)
   const { projectID } = req.body;
   try { 
     await Project().deleteOne({ projectID })

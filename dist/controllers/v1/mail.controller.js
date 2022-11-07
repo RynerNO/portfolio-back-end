@@ -12,6 +12,7 @@ var _config = _interopRequireDefault(require("../../config"));
 var _axios = _interopRequireDefault(require("axios"));
 
 var send = function send(req, res) {
+  console.log(req.body);
   var message = "\nFrom: *".concat(req.body.email, "* \nName: * ").concat(req.body.name, "* \nMessasge: * ").concat(req.body.text, "* ");
 
   _axios["default"].post("".concat(_config["default"].messageApi), {

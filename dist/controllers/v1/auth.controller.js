@@ -21,22 +21,23 @@ var login = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            console.log(req.body);
             _req$body = req.body, username = _req$body.username, password = _req$body.password;
-            _context.next = 3;
+            _context.next = 4;
             return (0, _User["default"])().findOne({
               name: username
             });
 
-          case 3:
+          case 4:
             user = _context.sent;
 
             if (!user) {
-              _context.next = 8;
+              _context.next = 9;
               break;
             }
 
             if (!user.comparePasswords(password)) {
-              _context.next = 8;
+              _context.next = 9;
               break;
             }
 
@@ -47,12 +48,12 @@ var login = /*#__PURE__*/function () {
               status: true
             }));
 
-          case 8:
+          case 9:
             return _context.abrupt("return", res.status(400).json({
               form: 'Неверный логин или пароль'
             }));
 
-          case 9:
+          case 10:
           case "end":
             return _context.stop();
         }
